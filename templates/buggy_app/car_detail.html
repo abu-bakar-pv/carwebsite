@@ -59,6 +59,7 @@
                         	<div class="upper-info">
                         		<div class="sidebar-title"><h3>{{car_details.brand}}-{{car_details.car_name}} </h3></div>
                             <hr>
+                            {{car.id}}
 
                             	<ul class="list">
                                     <li><a href="#" class="clearfix"><span class="col">Transmission</span> <span class="col">{{car_details.transmission}}</span></a></li>
@@ -76,7 +77,7 @@
                                 <li> <span class="price"><strong>${{car_details.car_price}}</strong> / Week</span></li>
                             </ul>
                         </div>
-                        <a href="{% url 'buggy_app:car_booking' %}?car={{car.id }}">Booking Now</a>
+                        <a href="{% url 'buggy_app:car_booking' %}?car={{car.id}}">Booking Now</a>
 
 
                         <a href="" class="theme-btn btn-style-one">BOOK a Car</a>

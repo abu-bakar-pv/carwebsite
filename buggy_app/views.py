@@ -60,20 +60,32 @@ class CarDetailView(DetailView):
 
 
 
-#amir bhai stackoverflow p yh code btaya tha paste kiya hua kch ni
+
+class BookingView(FormView):
+    template_name = 'buggy_app/booking.html'
+    form_class = BookingForm
+
 class BookingView(FormView):
     template_name = 'buggy_app/booking.html'
     form_class = BookingForm
 
     def get_context_data(self, **kwargs):
+        # kwargs['car'] is the car booking now!
         try:
             kwargs['car'] = Car.objects.get(id=self.request.GET.get('car', ''))
         except (Car.DoesNotExist, ValueError):
             kwargs['car'] = None
         return super(BookingView, self).get_context_data(**kwargs)
 
-
-
+    # if you still want to keep select car in form,and auto select this car do as:
+    def get_initial(self):
+        initial = super(BookingView, self).get_initial()
+        if 'car' in self.request.GET:
+            try:
+                initial['book_car'] = Car.objects.get(id=self.request.GET['car'])
+            except (Car.DoesNotExist, ValueError):
+                pass
+        return initial
 
 
 
