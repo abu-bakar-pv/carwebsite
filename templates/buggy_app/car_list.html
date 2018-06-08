@@ -1,0 +1,40 @@
+{% extends "buggy_app/base.html" %}
+
+
+{% block body_block %}
+{% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+<div class="container">
+
+
+
+
+
+{% for car in cars %}
+
+
+
+
+                        	<div class="car-info-block col-md-6 col-sm-6 col-xs-12">
+                            	<div class="inner-box">
+                                	<div class="image" >
+                                    	<a href="{{car.id}}/"><img src="{{car.car_image.url}}" alt="" /></a>
+                                    </div>
+                                    <div class="lower-box">
+                                    	<h3><a href={{car.id}}/>{{car.car_name}}</a></h3>
+                                        <div class="more-info">
+                                            <ul>
+                                                <li>Brand: <span>{{car.brand}}</span></li>
+                                                <li>Air Condition: <span>Yes</span></li>
+                                                <li>Color: <span>{{car.color}}</span></li>
+                                                <li>Transmission: <span>{{car.transmission}}</span></li>
+                                            </ul>
+                                            <div class="price-day">${{car.car_price}}<span>/Week</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                          {% endfor %}
+
+                    {% endblock %}

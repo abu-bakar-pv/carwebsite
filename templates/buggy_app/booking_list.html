@@ -1,0 +1,49 @@
+{% extends "buggy_app/base.html" %}
+
+
+{% block body_block %}
+{% load staticfiles %}
+<div class="container">
+
+
+
+  <div class="jumbotron">
+
+    <h1>Welcome to the list of Booking </h1>
+
+
+  </div>
+
+  <div class="col-12">
+
+  <img src="{% static "img/bg.png" %}" class="img-fluid" alt="Responsive image">
+  </div>
+  <div style="width : 50%">
+    <div class="container">
+
+
+    <table class="table table-hover table-dark">
+
+      <thead>
+        <tr style="border : 1px solid black">
+          <td style="border : 1px solid black" ><h2>ID</h2></td>
+          <td style="border : 1px solid black"><h2>NAME</h2></td>
+        </tr>
+      </thead>
+    {% for book in booking_list %}
+    <tbody>
+    <tr style="border : 1px solid black">
+        <td style="border : 1px solid black">
+          <h2>{{book.id}}</h2>
+        </td>
+        <td style="border : 1px solid white">
+          <h2><a href="{{book.id}}/">{{book.customer_name}} </a></h2>
+        </td>
+    </tr>
+    </tbody>
+    {% endfor %}
+    </table>
+    </div>
+  </div>
+    </div>
+{% endblock %}
